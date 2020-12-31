@@ -1,0 +1,5 @@
+*pycache*
+*/*pycache
+__pycache__/
+venv/
+*/__pycache__/
