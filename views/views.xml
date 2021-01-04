@@ -21,49 +21,71 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
-                    <field name="value"/>
-                    <field name="value2"/>
+                    <field name="total_score"/>
+                    <field name="mark"/>
+                    <field name="status"/>
                     <field name="description"/>
-                    <field name="student_id"/>
+                    <field name="is_registered" widget="website_publish_button"/>
+                    <field name="student_picture" widget="signature"/>
+                    <field name="parents_id"/>
                 </tree>
-        </field>
-    </record>
+            </field>
+        </record>
 
-    <!-- actions opening views on models -->
-    <record model="ir.actions.act_window" id="first_module.action_window">
-        <field name="name">Student</field>
-        <field name="res_model">first_module.first_module</field>
-        <field name="view_mode">tree,form</field>
-    </record>
+        <record model="ir.ui.view" id="parents_form_view">
+            <field name="name">registration.form</field>
+            <field name="model">first_module.parents</field>
+            <field name="arch" type="xml">
+                <form string="Parents">
+                    <sheet>
+                        <group>
+                            <field name="name_of_mother"/>
+                            <field name="name_of_father"/>
+                            <field name="birth_date"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
-    <record id="project.open_view_task_list_kanban" model="ir.actions.act_window.view">
-        <field name="sequence" eval="2"/>
-        <field name="view_mode">kanban</field>
-        <!--            <field name="act_window_id" ref="action_view_task"/>-->
-    </record>
 
-    <!-- server action to the one above -->
-    <record model="ir.actions.server" id="first_module.action_server">
-        <field name="name">first_module server</field>
-        <field name="model_id" ref="model_first_module_first_module"/>
-        <field name="state">code</field>
-        <field name="code">
-            action = {
-            "type": "ir.actions.act_window",
-            "view_mode": "tree,form",
-            "res_model": model._name,
-            }
-        </field>
-    </record>
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="first_module.action_window">
+            <field name="name">Student</field>
+            <field name="res_model">first_module.first_module</field>
+            <field name="view_mode">tree,form</field>
+        </record>
 
-    <!-- Top menu item -->
-    <menuitem name="First_module" id="first_module.menu_root"/>
 
-    <!-- menu categories -->
-    <menuitem name="MENU" id="first_module.menu_1" parent="first_module.menu_root"/>
+        <record id="project.open_view_task_list_kanban" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">kanban</field>
+            <!--            <field name="act_window_id" ref="action_view_task"/>-->
+        </record>
 
-    <!-- actions -->
-    <menuitem name="List" id="first_module.menu_1_list" parent="first_module.menu_1"
-              action="first_module.action_window"/>
-</data>
-        </odoo>
+        <!-- server action to the one above -->
+        <record model="ir.actions.server" id="first_module.action_server">
+            <field name="name">first_module server</field>
+            <field name="model_id" ref="model_first_module_first_module"/>
+            <field name="state">code</field>
+            <field name="code">
+                action = {
+                "type": "ir.actions.act_window",
+                "view_mode": "tree,form",
+                "res_model": model._name,
+                }
+            </field>
+        </record>
+
+        <!-- Top menu item -->
+        <menuitem name="First module" id="first_module.menu_root"
+                  action="first_module.action_window"/>
+
+        <!-- menu categories -->
+        <menuitem name="MENU" id="first_module.menu" parent="first_module.menu_root"/>
+
+        <!-- actions -->
+        <menuitem name="KANBAN" id="first_module.menu_kanban" parent="first_module.menu"
+                  action="first_module.action_window"/>
+    </data>
+</odoo>
