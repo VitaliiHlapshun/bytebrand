@@ -49,14 +49,12 @@
             </field>
         </record>
 
-
         <!-- actions opening views on models -->
         <record model="ir.actions.act_window" id="first_module.action_window">
             <field name="name">Student</field>
             <field name="res_model">first_module.first_module</field>
             <field name="view_mode">tree,form</field>
         </record>
-
 
         <record id="project.open_view_task_list_kanban" model="ir.actions.act_window.view">
             <field name="sequence" eval="2"/>

@@ -33,7 +33,6 @@ class first_module(models.Model):
             record_to_copy = self.env['first_module.first_module'].browse(12)
             record_to_copy.unlink()
 
-
     def cursor_query(self):
         self.env.cr.execute('SELECT * FROM first_module WHERE status="Passed"')
         return self.env.cr.fetchall()
@@ -51,11 +50,9 @@ class first_module(models.Model):
     class Parents(models.Model):
         _name = 'first_module.parents'
         _description = "parents"
-
         name_of_mother = fields.Char()
         name_of_father = fields.Char()
         birth_date = fields.Date(string="Date of birth", default=fields.Date.today)
-
         module_ids = fields.One2many('first_module.first_module', 'parents_id', string="Module")
 
     @api.model
