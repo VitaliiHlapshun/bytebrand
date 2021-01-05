@@ -14,8 +14,8 @@
                 </xpath>
             </field>
         </record>
+        
         <!-- explicit list view definition -->
-
         <record model="ir.ui.view" id="first_module.list">
             <field name="name">first_module list</field>
             <field name="model">first_module.first_module</field>
