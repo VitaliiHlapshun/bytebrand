@@ -6,10 +6,11 @@
             <field name="inherit_id" ref="project.view_task_form2"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='partner_id']" position="after">
-                    <field name="complexity" string='Complexity'/>
+                    <field name="complexity" string="Складність"/>
                     <field name="skill_level" string='Skill-level'/>
-                    <field name="urgency"/>
-                    <field name="experience"/>
+                    <field name="date_begin" widget="daterange"/>
+                    <widget name="web_ribbon" text="Cooked" bg_color="bg-success"/>
+                    <field name="experience" options="{'no_create': True}" readonly="1"/>
                 </xpath>
             </field>
         </record>
