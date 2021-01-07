@@ -1,0 +1,144 @@
+<odoo>
+    <data>
+
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="students.list">
+            <field name="name">students list</field>
+            <field name="model">students.students</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="status"/>
+                    <field name="school_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- explicit form view definition -->
+        <record model="ir.ui.view" id="students_form">
+            <field name="name">students.form</field>
+            <field name="model">students.students</field>
+            <field name="arch" type="xml">
+                <form string="Student">
+                    <button name="cursor_query" string="Click me" type="object"/>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="total_score"/>
+                            <field name="mark"/>
+                            <field name="status"/>
+                            <field name="description"/>
+                            <field name="is_registered" widget="website_publish_button"/>
+                            <field name="signature" widget="signature"/>
+                            <field name="school_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- explicit list view definition for school -->
+        <record model="ir.ui.view" id="students.list_school">
+            <field name="name">students list_school</field>
+            <field name="model">students.school</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- explicit form view definition for school -->
+        <record model="ir.ui.view" id="school_form_view">
+            <field name="name">school.form</field>
+            <field name="model">students.school</field>
+            <field name="arch" type="xml">
+                <form string="School">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="start"/>
+                            <field name="graduated"/>
+                            <field name="description"/>
+                            <field name="school_type"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- project task.form inheritance -->
+        <record id="project_task_inherit" model="ir.ui.view">
+            <field name="name">project.task.inherit</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="complexity" string="Складність"/>
+                    <field name="skill_level" string='Skill-level'/>
+                    <field name="date_begin" widget="daterange"/>
+                    <widget name="web_ribbon" text="Cooked" bg_color="bg-success"/>
+                    <field name="experience" options="{'no_create': True}" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!--        url action        -->
+        <record id="purchase_order_form_inherit_url_demo" model="ir.ui.view">
+            <field name="name">purchase.order.inherit.url.demo</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='button_confirm']" position="after">
+                    <button name="action_view_url"
+                            string="Website"
+                            type="object"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!--        action server        -->
+        <record model="ir.actions.server" id="multi_purchase_quotation_confirm">
+            <field name="name">Confirm It</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.batch_quotation_confirm()</field>
+        </record>
+
+        <!-- kanban view mode priority -->
+        <record id="project.open_view_task_list_kanban" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">kanban</field>
+        </record>
+
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="students.action_window">
+            <field name="name">students window</field>
+            <field name="res_model">students.students</field>
+            <field name="view_mode">tree,kanban,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="students.action_window_school">
+            <field name="name">school window</field>
+            <field name="res_model">students.school</field>
+            <field name="view_mode">tree,kanban,form</field>
+        </record>
+
+        <!-- Top menu item -->
+        <menuitem name="students" id="students.menu_root"/>
+
+        <!-- menu categories -->
+        <menuitem name="Menu 1" id="students.menu_1" parent="students.menu_root"/>
+        <menuitem name="Menu 2" id="students.menu_2" parent="students.menu_root"/>
+
+        <!-- actions -->
+        <menuitem name="List" id="students.menu_1_list" parent="students.menu_1"
+                  action="students.action_window"/>
+
+        <menuitem name="List of Schools" id="students.menu_school" parent="students.menu_2"
+                  action="students.action_window_school"/>
+
+    </data>
+</odoo>
