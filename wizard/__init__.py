@@ -1,0 +1,1 @@
+from . import students_total_score_update_wizard

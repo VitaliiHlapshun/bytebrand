@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+        <record id="students_total_score_update_view_wiz" model="ir.ui.view">
+            <field name="name">students.total.score.update.form.view.wiz</field>
+            <field name="model">students.total.score.update.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="total_score"/>
+                        </group>
+                    </group>
+
+                    <footer>
+                        <button string="Update Total Score" type="object" name="students_total_score_update"/>
+                        <button string="Cancel" special="cancel" class="btn btn-secondary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="student_total_score_update_wizard_action" model="ir.actions.act_window">
+            <field name="name">Total Score Update</field>
+            <field name="res_model">students.total.score.update.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

@@ -21,6 +21,7 @@
             <field name="arch" type="xml">
                 <form string="Student">
                     <button name="cursor_query" string="Click me" type="object"/>
+                    <button name="wiz_open" string="Click on Wizard" type="object"/>
                     <sheet>
                         <group>
                             <field name="name"/>

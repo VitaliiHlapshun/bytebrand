@@ -26,6 +26,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
+        'wizard/students_total_score_update_wizard_view.xml',
         # 'views/templates.xml',
     ],
     # only loaded in demonstration mode

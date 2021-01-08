@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_students_students,students.students,model_students_students,base.group_user,1,1,1,1
 access_students_students_1,students.students,model_students_school,base.group_user,1,1,1,1
+access_students_total_score_update_wizard,students.total.score.update.wizard,model_students_total_score_update_wizard,base.group_user,1,1,1,1

@@ -16,6 +16,12 @@ class students(models.Model):
     school_id = fields.Many2one('students.school', string="School",
                                 required=True, default=1)
 
+    def wiz_open(self):
+        return {'type': 'ir.actions.act_window',
+                'res_model': 'students.total.score.update.wizard',
+                'view_mode': 'form',
+                'target': 'new'}
+
     def base_methods_search(self):
         students = self.env['students.students'].search([])
         print(students)
