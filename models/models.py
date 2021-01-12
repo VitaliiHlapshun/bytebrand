@@ -119,6 +119,17 @@ class ProjectTaskInherit(models.Model):
 class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
 
+    expiry_date = fields.Datetime(string='Quotation Expiry Date')
+    state = fields.Selection(selection_add=[('expired', 'Quotaion Expired')])
+
+    def check_expiry(self):
+        today = fields.Datetime.today()
+        purchase_orders = self.env['purchase.order'].search([])
+
+        for order in purchase_orders:
+            if order.state == "draft" and order.date_order < today:
+                order.state = "sent"
+
     def action_view_url(self):
         url = self.partner_id.website
         if url:
@@ -134,3 +145,10 @@ class PurchaseOrder(models.Model):
         for order in self:
             if order.state == 'draft':
                 order.button_confirm()
+
+
+
+    class Teachers(models.Model):
+        _name = 'students.teachers'
+
+        name = fields.Char()

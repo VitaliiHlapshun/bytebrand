@@ -1,0 +1,13 @@
+<odoo>
+    <record id="ir_cron_quotaion_expiration" model="ir.cron">
+        <field name="name">Purchase: Quotaion check</field>
+        <field name="model_id" ref="model_purchase_order"/>
+        <field name="state">code</field>
+        <field name="code">model.check_expiry()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field eval="False" name="doall"/>
+        <field eval="True" name="active"/>
+    </record>
+</odoo>
