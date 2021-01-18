@@ -29,12 +29,24 @@
                             <field name="mark"/>
                             <field name="status"/>
                             <field name="description"/>
-                            <field name="is_registered" widget="website_publish_button"/>
+                            <field name="is_registered"/>
                             <field name="signature" widget="signature"/>
                             <field name="school_id"/>
+                            <field name="charity"/>
                         </group>
                     </sheet>
                 </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="students_graph">
+            <field name="name">students.students.graph</field>
+            <field name="model">students.students</field>
+            <field name="arch" type="xml">
+                <graph string="Students Card Graph" stacked="True" type="pie">
+                    <field name="name"/>
+                    <field name="charity" type="measure"/>
+                </graph>
             </field>
         </record>
 
@@ -118,7 +130,7 @@
         <record model="ir.actions.act_window" id="students.action_window">
             <field name="name">students window</field>
             <field name="res_model">students.students</field>
-            <field name="view_mode">tree,kanban,form</field>
+            <field name="view_mode">tree,kanban,graph,form</field>
         </record>
 
         <record model="ir.actions.act_window" id="students.action_window_school">

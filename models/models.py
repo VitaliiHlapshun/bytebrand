@@ -15,6 +15,7 @@ class students(models.Model):
     signature = fields.Binary(string='Signature')
     school_id = fields.Many2one('students.school', string="School",
                                 required=True, default=1)
+    charity = fields.Float(string="Charity contribution ($)")
 
     def wiz_open(self):
         return {'type': 'ir.actions.act_window',

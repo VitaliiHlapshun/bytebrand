@@ -27,9 +27,11 @@
         'security/ir.model.access.csv',
         'views/views.xml',
         'wizard/students_total_score_update_wizard_view.xml',
-        'views/templates.xml',
-        'demo/demo.xml',
-        'views/quotation_expiration_cron.xml',
+        # 'views/templates.xml',
+        # 'demo/demo.xml',
+        # 'views/quotation_expiration_cron.xml',
+        'reports/students_card.xml',
+        'reports/report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
